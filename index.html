@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050b12">
+<title>4eKhSAI</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+@property --c{syntax:"<color>";inherits:true;initial-value:#35e0c6}
+:root{--bg:#050b12;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.09);--ln:rgba(255,255,255,.1);--tx:#eaf6f7;--mu:#8aa3b0;--sheet:#0a1620}
+body{--c:#35e0c6;transition:--c .6s}
+body[data-s=listen]{--c:#f2c46d}
+body[data-s=think]{--c:#a78bfa}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{height:100dvh;display:flex;flex-direction:column;color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(85% 50% at 50% 30%,color-mix(in srgb,var(--c) 15%,transparent),transparent 72%),var(--bg);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);overflow:hidden}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:.02em}
+.brand svg{width:26px;height:26px;stroke:var(--c);fill:none;stroke-width:1.6;stroke-linejoin:round;transition:stroke .6s}
+.hr{display:flex;align-items:center;gap:10px}
+.ic{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:14px;background:var(--s1);border:1px solid var(--ln);transition:background .2s}
+.ic:active{background:var(--s2)}
+.ic svg{width:20px;height:20px;stroke:var(--tx);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tp{display:none;align-items:center;gap:6px;font-size:14px;font-variant-numeric:tabular-nums;color:#f2c46d;background:rgba(242,196,109,.1);border:1px solid rgba(242,196,109,.3);border-radius:99px;padding:5px 12px}
+#tp.on{display:flex}
+#tp svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+#stat{flex:none;min-height:22px;margin:6px 20px 0;font-size:13px;color:var(--mu);text-align:center}
+#vv,#cv{flex:1;min-height:0;display:none;flex-direction:column;padding-bottom:84px}
+body[data-v=vv] #vv{display:flex;align-items:center}
+body[data-v=cv] #cv{display:flex}
+#orb{flex:none;border:0;background:none;padding:0;margin:0;line-height:0;border-radius:50%}
+.chip{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:14px;color:var(--mu);background:var(--s1);border:1px solid var(--ln);border-radius:99px;padding:6px 14px}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);animation:bl 1.6s ease-in-out infinite}
+@keyframes bl{50%{opacity:.35}}
+#cap{flex:1;min-height:0;width:100%;max-width:520px;padding:12px 28px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:10px;overflow:hidden}
+#cq{color:var(--mu);font-size:15px;min-height:22px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#ca{font-size:22px;line-height:1.35;font-weight:500;max-height:8em;overflow:hidden;text-wrap:balance}
+.chk{flex:none;display:flex;gap:10px;align-items:center;justify-content:center;color:var(--mu);font-size:14px;padding:6px 0 4px;cursor:pointer}
+.sw{-webkit-appearance:none;appearance:none;position:relative;flex:none;width:46px;height:28px;margin:0;border-radius:99px;background:var(--s2);border:1px solid var(--ln);cursor:pointer;transition:.25s}
+.sw::before{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--mu);transition:.25s}
+.sw:checked{background:color-mix(in srgb,var(--c) 22%,transparent);border-color:var(--c)}
+.sw:checked::before{transform:translateX(18px);background:var(--c);box-shadow:0 0 10px var(--c)}
+#log{flex:1;min-height:0;overflow-y:auto;padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px;mask-image:linear-gradient(transparent,#000 20px);overscroll-behavior:contain}
+.m{max-width:88%;display:flex;flex-direction:column;gap:4px}
+.bt{padding:10px 14px;border-radius:20px;white-space:pre-wrap;word-break:break-word;border:1px solid var(--ln)}
+.u{align-self:flex-end;align-items:flex-end}
+.u .bt{background:color-mix(in srgb,var(--c) 18%,transparent);border-color:color-mix(in srgb,var(--c) 40%,transparent);border-bottom-right-radius:6px}
+.j{align-self:flex-start}
+.j .bt{background:var(--s1);border-bottom-left-radius:6px}
+.s{align-self:center;color:var(--mu);font-size:13px;text-align:center;max-width:92%}
+.mf{display:flex;gap:12px;font-size:12px;color:var(--mu);padding:0 6px}
+.mf button{background:none;border:0;color:var(--c);padding:0;font-size:12px}
+.dt i{display:inline-block;width:6px;height:6px;margin:3px 2px;border-radius:50%;background:var(--c);animation:dt 1s ease-in-out infinite}
+.dt i:nth-child(2){animation-delay:.15s}.dt i:nth-child(3){animation-delay:.3s}
+@keyframes dt{50%{transform:translateY(-4px);opacity:.35}}
+#sg{display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
+#sg::-webkit-scrollbar{display:none}
+#sg button{flex:none;background:var(--s1);border:1px solid var(--ln);border-radius:99px;padding:8px 14px;font-size:14px;white-space:nowrap}
+#tf{display:flex;gap:8px;align-items:center;margin:0 12px;padding:6px;background:var(--s1);border:1px solid var(--ln);border-radius:26px}
+#tf:focus-within{border-color:var(--c)}
+#ti{flex:1;min-width:0;background:none;border:0;padding:8px 10px;outline:0}
+.tg{position:relative;flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;cursor:pointer}
+.tg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.tg svg{width:20px;height:20px;fill:none;stroke:var(--mu);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.25s}
+.tg:has(input:checked){background:color-mix(in srgb,var(--c) 18%,transparent)}
+.tg input:checked+svg{stroke:var(--c)}
+.tg:has(input:focus-visible){outline:2px solid var(--c)}
+.go{flex:none;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:var(--c);transition:background .6s}
+.go svg{width:20px;height:20px;stroke:#04121a;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+#tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));display:flex;gap:4px;padding:5px;border-radius:99px;background:rgba(10,22,32,.82);border:1px solid var(--ln);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:5}
+#tabs button{display:flex;align-items:center;gap:8px;border:0;background:none;padding:10px 22px;border-radius:99px;color:var(--mu);font-weight:600;transition:.25s}
+#tabs button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tabs button.on{background:var(--c);color:#04121a}
+#bd{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.25s;z-index:9}
+#set{position:fixed;left:0;right:0;bottom:0;z-index:10;max-height:90dvh;overflow-y:auto;background:var(--sheet);border-top:1px solid var(--ln);border-radius:26px 26px 0 0;padding:10px 16px calc(20px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;transform:translateY(105%);transition:transform .3s;overscroll-behavior:contain}
+.open #set{transform:none}.open #bd{opacity:1;pointer-events:auto}
+.grip{align-self:center;width:40px;height:4px;border-radius:4px;background:var(--ln);flex:none}
+.hd{display:flex;justify-content:space-between;align-items:center}
+.hd h2{margin:0;font-size:20px}
+.card{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:var(--s1);border:1px solid var(--ln)}
+.card h3{margin:0;font-size:15px}
+.card label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mu)}
+.card input:not([type=checkbox]),.card select{width:100%;background:rgba(0,0,0,.25);border:1px solid var(--ln);border-radius:14px;padding:12px;outline:0}
+.card input:focus,.card select:focus{border-color:var(--c)}
+.card select{-webkit-appearance:none;appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238aa3b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px}
+.card option{background:var(--sheet)}
+.pw{position:relative}
+.pw input{padding-right:48px!important}
+.eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:40px;height:40px;display:grid;place-items:center;background:none;border:0;border-radius:12px}
+.eye svg{width:20px;height:20px;stroke:var(--mu);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn{background:var(--s2);border:1px solid var(--ln);border-radius:14px;padding:12px 14px;font-weight:500}
+.btn:active{filter:brightness(1.3)}
+.btn.pri{background:var(--c);border-color:transparent;color:#04121a;font-weight:600;transition:background .6s}
+.btn.dg{color:#ff8a8a}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{margin:0;font-size:13px;color:var(--mu);min-height:18px}
+#ml{display:flex;flex-direction:column;gap:6px}
+.mi{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 8px 8px 12px;border-radius:12px;background:rgba(0,0,0,.25);font-size:14px}
+.mi button{flex:none;width:30px;height:30px;border:0;border-radius:50%;background:var(--s2);color:var(--mu);font-size:18px;line-height:1}
+@media (prefers-reduced-motion:reduce){.chip::before,.dt i{animation:none}body,#set,.sw,.sw::before{transition:none}}
+</style>
+</head>
+<body data-s="idle" data-v="vv">
+<header>
+  <div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/><rect x="5" y="5" width="14" height="14" rx="1" transform="rotate(45 12 12)"/></svg>4eKhSAI</div>
+  <div class="hr">
+    <div id="tp"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg><span id="tpt"></span></div>
+    <button class="ic" id="gear" aria-label="Sozlamalar"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
+  </div>
+</header>
+<div id="stat" role="status" aria-live="polite"></div>
+<main id="vv">
+  <button id="orb" aria-label="Gapirish"><canvas id="hud"></canvas></button>
+  <div class="chip" id="chip">Tayyor</div>
+  <div id="cap" aria-live="polite"><div id="cq"></div><div id="ca"></div></div>
+  <label class="chk"><input type="checkbox" id="auto" class="sw"><span>Doimiy suhbat</span></label>
+</main>
+<section id="cv">
+  <div id="log"></div>
+  <div id="sg"><button>Toshkentda ob-havo qanday?</button><button>Soat nechchi?</button><button>10 daqiqaga taymer qoʻy</button><button>Menga bir qiziq fakt ayt</button></div>
+  <form id="tf"><input id="ti" type="text" placeholder="Xabar yozing…" autocomplete="off" aria-label="Xabar"><label class="tg" title="Javobni ovozda aytish"><input type="checkbox" id="rd" aria-label="Javobni ovozda aytish"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></label><button class="go" aria-label="Yuborish"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form>
+</section>
+<nav id="tabs"><button data-v="vv" class="on"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Ovoz</button><button data-v="cv"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Chat</button></nav>
+<div id="wrap"><div id="bd"></div>
+<div id="set" role="dialog" aria-label="Sozlamalar">
+  <div class="grip"></div>
+  <div class="hd"><h2>Sozlamalar</h2><button class="ic" id="cl" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="card">
+    <h3>Aql (Gemini)</h3>
+    <label>API kaliti<div class="pw"><input id="key" type="password" autocomplete="off" placeholder="AIza..."><button type="button" class="eye" aria-label="Kalitni koʻrsatish"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></label>
+    <button class="btn pri" id="save">Saqlash va modellarni yuklash</button>
+    <p class="hint" id="kh"></p>
+    <label>Model<select id="model"><option value="auto">Avto: eng yaxshi (tavsiya)</option></select></label>
+  </div>
+  <div class="card">
+    <h3>Ovoz (NeuronAI)</h3>
+    <label>API kaliti<div class="pw"><input id="nk" type="password" autocomplete="off" placeholder="nai_..."><button type="button" class="eye" aria-label="Kalitni koʻrsatish"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></label>
+    <label>Ovoz<select id="vs"></select></label>
+    <p class="hint" id="vh"></p>
+    <div class="row"><button class="btn" id="lv">Ovozlarni yuklash</button><button class="btn" id="vt">Ovozni sinash</button></div>
+  </div>
+  <div class="card">
+    <h3>Xotira</h3>
+    <div id="ml"></div>
+    <button class="btn dg" id="mm">Xotirani tozalash</button>
+  </div>
+  <div class="card">
+    <h3>Suhbat va ilova</h3>
+    <button class="btn" id="cc">Suhbatni tozalash</button>
+    <button class="btn" id="inst" style="display:none">Ilova sifatida oʻrnatish</button>
+  </div>
+  <div class="card" id="pc" style="display:none">
+    <h3>Telefon boshqaruvi</h3>
+    <p class="hint" id="ph"></p>
+    <div class="row"><button class="btn" id="pa">Ruxsatlar</button><button class="btn" id="ps">Ilova sozlamalari</button></div>
+  </div>
+</div></div>
+<script>
+
+const $ = id => document.getElementById(id), LS = window.localStorage;
+const NJ = window.JarvisNative || null, Q = [];
+let micLvl = 0;
+const nj = (n, a) => { try { return JSON.parse(NJ.act(n, JSON.stringify(a || {}))); } catch (e) { return { error: String(e.message || e) }; } };
+const later = f => { Q.push(f); };
+function flushQ() { Q.splice(0).forEach(f => { try { f(); } catch (e) {} }); }
+const NSYS = " Telefonni boshqarish vositalaring bor: budilnik, taymer, qoʻngʻiroq, ilova ochish, havola ochish, ovoz balandligi, fonar, musiqa boshqaruvi. Buyruq berilsa, darhol tegishli vositani chaqir va juda qisqa tasdiqla (masalan: Budilnik oltiga qoʻyildi, boss). Ilova ochish va qoʻngʻiroq javobing aytilgandan keyin bajariladi, shuning uchun hozirgi zamonda ayt (Telegram ochilyapti). Kontakt ismi nutq tanishda buzilishi mumkin: eng yaqin ismni sinab koʻr, bir nechta mos kelsa qaysi biri ekanini soʻra. Ilova nomini odatdagi koʻrinishda uzat (Telegram, YouTube, Camera, Settings).";
+const SE = { "not-allowed": "Mikrofonga ruxsat bering va qayta bosing.", "service-not-allowed": "Nutq tanish xizmati yoʻq. Google ilovasini yangilang.", network: "Internet aloqasi yoʻq.", "audio-capture": "Mikrofon ishlamayapti.", busy: "Nutq tanish band, qayta urinib koʻring.", "language-not-supported": "Oʻzbek tili nutq tanishda mavjud emas." };
+const API = "https://generativelanguage.googleapis.com/v1beta/", TTS = "https://my.neuronai.uz/api/v1/tts";
+const SYS = "Sen 4eKhSAI — foydalanuvchining shaxsiy ovozli yordamchisisan. Faqat oʻzbek tilida, lotin yozuvida gapir. Javoblaring ovozda aytiladi: qisqa (1–3 jumla), aniq va tabiiy boʻlsin; roʻyxat, belgi va emoji ishlatma. Foydalanuvchiga \"boss\" deb murojaat qil. Maslahat soʻralsa, aniq tavsiya ber. Ismingni faqat soʻralganda ayt.";
+const g = (k, d) => LS.getItem(k) || d, sv = (k, v) => LS.setItem(k, v);
+let key = g("k", ""), model = g("m", "auto"), nkey = g("nk", ""), nvoice = g("nv", "kamron");
+let hist = [], rec = null, S = "idle", aud = null, AC = null, an = null, fd = null, SP = null, mem = [];
+try { mem = JSON.parse(g("mem", "[]")); } catch (e) {}
+const sys = () => SYS + " Hozir: " + new Date().toLocaleString("en-GB", { dateStyle: "full", timeStyle: "short" }) + ". Nutq tanish xato qilishi mumkin: maʼnosini taxmin qil, juda tushunarsiz boʻlsa bitta qisqa savol ber. %, °C, $ va qisqartmalarni soʻz bilan yoz." + (mem.length ? " Foydalanuvchi haqida eslab qolganlaring: " + mem.join("; ") + "." : "") + " Kerak boʻlsa vositalardan foydalan: vaqt, ob-havo, taymer, internet qidiruvi. Foydalanuvchi oʻzi haqida doimiy muhim narsa aytsa (ism, oila, odat), remember vositasi bilan saqla." + (NJ ? NSYS : "");
+function upd() {
+  const l = $("ml"); l.innerHTML = "";
+  if (!mem.length) { const p = document.createElement("p"); p.className = "hint"; p.textContent = "Hozircha hech narsa yoʻq. Masalan: “Ismim Shaxriyor, eslab qol” deng."; l.appendChild(p); }
+  mem.forEach((f, i) => {
+    const r = document.createElement("div"); r.className = "mi";
+    const s = document.createElement("span"); s.textContent = f;
+    const b = document.createElement("button"); b.textContent = "×"; b.setAttribute("aria-label", "Oʻchirish");
+    b.onclick = () => { mem.splice(i, 1); sv("mem", JSON.stringify(mem)); upd(); };
+    r.append(s, b); l.appendChild(r);
+  });
+  $("mm").style.display = mem.length ? "" : "none";
+}
+const LBL = { idle: "Tayyor", listen: "Tinglayapman", think: "Oʻylayapman", speak: "Gapiryapman" };
+function setS(s) { S = s; document.body.dataset.s = s; $("chip").textContent = LBL[s]; }
+let stt = 0;
+function stat(t) { const e = $("stat"); e.textContent = t; clearTimeout(stt); if (t) stt = setTimeout(() => { e.textContent = ""; }, 9000); }
+const fe = e => /failed to fetch|networkerror|load failed/i.test(e.message) ? "internet aloqasi yoʻq" : e.message;
+const hint = (id, t) => { $(id).textContent = t; };
+let chat = []; try { chat = JSON.parse(g("chat", "[]")); } catch (e) {}
+const saveChat = () => sv("chat", JSON.stringify(chat.slice(-60)));
+function msg(c, t, ts) {
+  const w = document.createElement("div"); w.className = "m " + c;
+  if (c === "s") { w.textContent = t; $("log").appendChild(w); $("log").scrollTop = 1e9; return w; }
+  const b = document.createElement("div"); b.className = "bt"; b.textContent = t; w.appendChild(b);
+  const f = document.createElement("div"); f.className = "mf";
+  f.innerHTML = "<span>" + new Date(ts || Date.now()).toTimeString().slice(0, 5) + "</span>";
+  if (c === "j") {
+    const a = document.createElement("button"); a.textContent = "Oʻqish"; a.onclick = () => { stopSpeak(); speak(b.textContent); };
+    const k = document.createElement("button"); k.textContent = "Nusxa";
+    k.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(b.textContent); k.textContent = "Nusxalandi"; setTimeout(() => k.textContent = "Nusxa", 1200); };
+    f.append(a, k);
+  }
+  w.appendChild(f); $("log").appendChild(w); $("log").scrollTop = 1e9; $("sg").style.display = "none"; return b;
+}
+function say(t, c) {
+  if (c === "s") { stat(t); return msg("s", t); }
+  chat.push({ r: c, t, ts: Date.now() }); saveChat(); return msg(c, t);
+}
+function ready(n = true) {
+  if (key && (!n || nkey || uzv())) return true;
+  $("wrap").classList.add("open"); stat(key ? "NeuronAI kalitini kiriting." : "Avval Gemini kalitini kiriting."); return false;
+}
+function unlock() { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); } catch (e) {} }
+
+async function loadModels() {
+  if (!key) { hint("kh", "Gemini kalitini kiriting."); return; }
+  hint("kh", "Yuklanmoqda…");
+  try {
+    const r = await fetch(API + "models?pageSize=200", { headers: { "x-goog-api-key": key } });
+    const j = await r.json();
+    if (!r.ok) throw new Error((j.error && j.error.message) || r.status);
+    const ms = (j.models || []).filter(m => (m.supportedGenerationMethods || []).includes("generateContent")).map(m => m.name.replace("models/", ""));
+    sv("ml", JSON.stringify(ms));
+    const all = ["auto", ...rank(ms)], sel = $("model"); sel.innerHTML = "";
+    all.forEach(n => { const o = document.createElement("option"); o.value = n; o.textContent = n === "auto" ? "Avto: eng yaxshi (tavsiya)" : n; sel.appendChild(o); });
+    sel.value = all.includes(model) ? model : "auto"; model = sel.value; sv("m", model);
+    hint("kh", "Kalit qabul qilindi. Eng yaxshi model: " + autoList()[0]);
+  } catch (e) { hint("kh", "Kalit yoki model xatosi: " + fe(e)); }
+}
+
+async function loadVoices() {
+  if (!nkey) { hint("vh", "Ovozlarni yuklash uchun NeuronAI kalitini kiriting."); return; }
+  hint("vh", "Yuklanmoqda…");
+  try {
+    const r = await fetch(TTS + "/voices", { headers: { Authorization: "Bearer " + nkey } });
+    const j = await r.json();
+    if (!r.ok) throw new Error((j.error && j.error.message) || r.status);
+    const a = (Array.isArray(j) ? j : (j.data || j.voices || j.items || [])).filter(v => v && (v.voice_id || v.id));
+    if (!a.length) { hint("vh", "Ovozlar roʻyxati boʻsh."); return; }
+    const isUz = v => /^uz/i.test(v.language || "") ? 1 : 0;
+    a.sort((x, y) => isUz(y) - isUz(x));
+    const sel = $("vs"); sel.innerHTML = "";
+    a.forEach(v => { const id = v.voice_id || v.id, o = document.createElement("option"); o.value = id; o.textContent = (v.name || id) + (v.language ? " (" + v.language + ")" : ""); sel.appendChild(o); });
+    sel.value = a.some(v => (v.voice_id || v.id) === nvoice) ? nvoice : (a[0].voice_id || a[0].id);
+    nvoice = sel.value; sv("nv", nvoice);
+    hint("vh", a.length + " ta ovoz yuklandi.");
+  } catch (e) { hint("vh", "Ovozlarni yuklab boʻlmadi: " + fe(e)); }
+}
+
+const BEST = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-flash-latest", "gemini-3.5-flash-lite"];
+const BUSY = [404, 429, 500, 502, 503, 504], cool = {}, noTh = {};
+let ac = null;
+const nap = t => new Promise(r => setTimeout(r, t));
+const ver = n => { const m = /gemini-(\d+(?:\.\d+)?)/.exec(n); return m ? +m[1] : 0; };
+const usable = n => /^gemini-\d/.test(n) && /flash|pro/.test(n) && !/image|tts|live|audio|embed|robot|computer|omni|cyber|exp|8b|custom|thinking|banana/.test(n);
+const rank = l => l.filter(usable).sort((a, b) => ver(b) - ver(a) || /lite/.test(a) - /lite/.test(b) || /preview/.test(a) - /preview/.test(b));
+const lowable = m => /flash/.test(m) && !/lite/.test(m) && (ver(m) >= 3 || /latest/.test(m));
+const think = { generationConfig: { thinkingConfig: { thinkingLevel: "low" } } };
+const autoList = () => {
+  let ml = []; try { ml = JSON.parse(g("ml", "[]")); } catch (e) {}
+  const fl = rank(ml).filter(n => /flash/.test(n) && ver(n) >= 3);
+  if (!fl.length) return BEST;
+  return [...new Set([...fl.filter(n => !/lite/.test(n)).slice(0, 3), "gemini-flash-latest", ...fl.filter(n => /lite/.test(n)).slice(0, 1)])];
+};
+const chain = () => {
+  const u = [...new Set(model === "auto" ? autoList() : [model, ...autoList()])].slice(0, 6), ok = u.filter(n => !(cool[n] > Date.now()));
+  return ok.length ? ok : u;
+};
+if (model === "gemini-flash-latest") { model = "auto"; sv("m", model); }
+const textOf = j => ((j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts) || []).map(p => p.text || "").join("").trim();
+const TOOLS = [{ functionDeclarations: [
+  { name: "get_time", description: "Hozirgi sana, vaqt va vaqt mintaqasini qaytaradi" },
+  { name: "get_weather", description: "Shaharning hozirgi ob-havosi (weather_code — WMO kodi)", parameters: { type: "object", properties: { city: { type: "string", description: "Shahar nomi lotin yozuvida, masalan Tashkent" } }, required: ["city"] } },
+  { name: "set_timer", description: "Taymer qoʻyadi", parameters: { type: "object", properties: { seconds: { type: "integer" }, label: { type: "string" } }, required: ["seconds"] } },
+  { name: "remember", description: "Foydalanuvchi haqidagi muhim faktni uzoq muddatga eslab qoladi", parameters: { type: "object", properties: { fact: { type: "string" } }, required: ["fact"] } },
+  { name: "search_web", description: "Internetdan yangi maʼlumot qidiradi (yangiliklar, narxlar, faktlar)", parameters: { type: "object", properties: { query: { type: "string" } }, required: ["query"] } }
+] }];
+function alarm(l) {
+  say("Taymer: " + l, "s"); beep();
+  try { navigator.vibrate && navigator.vibrate([300, 150, 300]); } catch (e) {}
+  if ((nkey || uzv()) && S === "idle") setTimeout(() => speak("Boss, taymer tugadi. " + l), 1800);
+}
+const FN = {
+  get_time: async () => ({ now: new Date().toString() }),
+  get_weather: async ({ city }) => {
+    const a = await (await fetch("https://geocoding-api.open-meteo.com/v1/search?count=1&name=" + encodeURIComponent(city))).json();
+    const p = a.results && a.results[0]; if (!p) return { error: "shahar topilmadi" };
+    const w = await (await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + p.latitude + "&longitude=" + p.longitude + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto")).json();
+    return { city: p.name, country: p.country, ...w.current };
+  },
+  set_timer: async ({ seconds, label }) => { const n = Math.max(1, Math.min(+seconds || 0, 86400)), x = { id: Date.now(), at: Date.now() + n * 1000, l: label || "Vaqt tugadi" }; sv("tm", JSON.stringify([...tmGet(), x])); arm(x); return { ok: true, seconds: n }; },
+  remember: async ({ fact }) => { mem = [...mem, String(fact).slice(0, 200)].slice(-30); sv("mem", JSON.stringify(mem)); upd(); return { ok: true }; },
+  search_web: async ({ query }) => {
+    let err = "qidiruv ishlamadi";
+    for (const m of chain()) {
+      try {
+        const r = await fetch(API + "models/" + m + ":generateContent", { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, signal: ac && ac.signal,
+          body: JSON.stringify({ tools: [{ google_search: {} }], contents: [{ role: "user", parts: [{ text: query + "\n\nQisqa va aniq javob ber (3-4 jumla)." }] }], ...(lowable(m) && !noTh[m] ? think : {}) }) });
+        const j = await r.json();
+        if (r.ok) return { answer: textOf(j) };
+        err = (j.error && j.error.message) || r.status;
+        if (r.status === 400 && /thinking/i.test(err)) { noTh[m] = 1; continue; }
+        if (!BUSY.includes(r.status)) break;
+      } catch (e) { if (e.name === "AbortError") throw e; err = e.message; }
+    }
+    return { error: err };
+  }
+};
+
+async function* sse(r) {
+  const rd = r.body.getReader(), dec = new TextDecoder(); let b = "";
+  for (;;) {
+    const { done, value } = await rd.read(); if (done) break;
+    b += dec.decode(value, { stream: true }); let i;
+    while ((i = b.indexOf("\n")) >= 0) {
+      const l = b.slice(0, i).trim(); b = b.slice(i + 1);
+      if (l.startsWith("data:")) { try { yield JSON.parse(l.slice(5)); } catch (_) {} }
+    }
+  }
+}
+async function streamOnce(m, contents, onText) {
+  const go = async th => {
+    const r = await fetch(API + "models/" + m + ":streamGenerateContent?alt=sse", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, signal: ac && ac.signal,
+      body: JSON.stringify({ systemInstruction: { parts: [{ text: sys() }] }, tools: TOOLS, contents, ...(th ? think : {}) })
+    });
+    if (r.ok) return r;
+    let j = {}; try { j = await r.json(); } catch (_) {}
+    const msg = (j.error && j.error.message) || r.status;
+    if (th && r.status === 400 && /thinking/i.test(msg)) { noTh[m] = 1; return go(false); }
+    const e = new Error(msg); e.busy = BUSY.includes(r.status); throw e;
+  };
+  const r = await go(lowable(m) && !noTh[m]);
+  const parts = [];
+  for await (const j of sse(r)) {
+    const ps = (j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts) || [];
+    for (const p of ps) { parts.push(p); if (p.text && !p.thought) onText(p.text); }
+  }
+  return parts;
+}
+async function answer(q, onText) {
+  const base = [...hist, { role: "user", parts: [{ text: q }] }], steps = []; let all = "";
+  for (let n = 0; n < 4; n++) {
+    const contents = base.concat(steps); let parts, last;
+    for (let rd = 0; rd < 2 && !parts; rd++) {
+      if (rd) { stat("Band, qayta urinyapman…"); await nap(1500); }
+      for (const m of chain()) {
+        let started = false;
+        try { parts = await streamOnce(m, contents, t => { started = true; all += t; onText(t); }); break; }
+        catch (e) { last = e; if (!e.busy || started) throw e; cool[m] = Date.now() + 12e4; stat(m + " band, zaxira modelga oʻtyapman…"); }
+      }
+    }
+    if (!parts) throw last;
+    const calls = parts.filter(p => p.functionCall);
+    if (!calls.length) {
+      hist = [...base, { role: "model", parts: [{ text: all || "..." }] }].slice(-16);
+      while (hist.length && hist[0].role !== "user") hist.shift();
+      return all;
+    }
+    steps.push({ role: "model", parts });
+    const res = [];
+    for (const c of calls) {
+      const f = c.functionCall; stat("Vosita: " + f.name + "…"); let out;
+      try { out = await FN[f.name](f.args || {}); } catch (e) { out = { error: e.message }; }
+      res.push({ functionResponse: { ...(f.id ? { id: f.id } : {}), name: f.name, response: out } });
+    }
+    steps.push({ role: "user", parts: res });
+  }
+  throw new Error("Vositalar tsikli tugamadi");
+}
+
+function hook(a) {
+  an = fd = null;
+  if (!AC || AC.state !== "running") return;
+  try {
+    const s = AC.createMediaElementSource(a), n = AC.createAnalyser();
+    n.fftSize = 128; n.smoothingTimeConstant = .75;
+    s.connect(n); n.connect(AC.destination);
+    fd = new Uint8Array(n.frequencyBinCount); an = n;
+  } catch (e) { an = fd = null; }
+}
+function takeSentences(buf, fin, min = 24) {
+  const out = [], re = /[.!?…]+["”’)]*(\s+|$)|\n+/g; let last = 0, m;
+  while ((m = re.exec(buf))) {
+    if (!fin && !/\s$/.test(m[0])) break;
+    const end = m.index + m[0].length, s = buf.slice(last, end).trim();
+    if (s.length >= min) { out.push(s); last = end; }
+  }
+  if (fin) { const t = buf.slice(last).trim(); if (t) out.push(t); last = buf.length; }
+  return [out, buf.slice(last)];
+}
+async function fetchTTS(t, n = 0) {
+  if (!nkey) throw new Error("NeuronAI kaliti yoʻq");
+  try {
+    const r = await fetch(TTS + "/synthesize", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + nkey },
+      body: JSON.stringify({ text: t, voice_id: nvoice, language: "uz", quality: "standard" })
+    });
+    if (!r.ok) {
+      let m = r.status;
+      try { const j = await r.json(); m = (j.error && (j.error.message || j.error.code)) || j.message || m; } catch (_) {}
+      const e = new Error(m); e.st = r.status; throw e;
+    }
+    return await r.blob();
+  } catch (e) {
+    if (n < 1 && (!e.st || e.st >= 500)) { await nap(500); return fetchTTS(t, n + 1); }
+    throw e;
+  }
+}
+const uzv = () => { try { return speechSynthesis.getVoices().find(v => /^uz/i.test(v.lang)); } catch (e) { return null; } };
+function native(t) {
+  const v = uzv(); if (!v) return Promise.resolve(false);
+  return new Promise(res => {
+    const u = new SpeechSynthesisUtterance(t); u.voice = v; u.lang = v.lang; u.rate = 1.05;
+    u.onend = u.onerror = () => res(true); setS("speak"); speechSynthesis.speak(u);
+  });
+}
+function play(b) {
+  return new Promise((res, rej) => {
+    aud = new Audio(URL.createObjectURL(b)); hook(aud);
+    aud.onended = res; aud.onerror = () => rej(new Error("audio oʻynamadi"));
+    setS("speak"); aud.play().catch(rej);
+  });
+}
+function stopAud() { if (aud) { aud.pause(); aud.dispatchEvent(new Event("ended")); } }
+function newSpeaker() {
+  const q = []; let done = false, stopped = false, wake = null, shown = false, bad = false;
+  const run = (async () => {
+    for (;;) {
+      while (!q.length) { if (done) return; await new Promise(r => wake = r); }
+      const it = q.shift(); if (stopped) continue;
+      try { const b = await it.p; if (!stopped) { await play(b); aud = null; } }
+      catch (e) { aud = null; bad = !!uzv(); if (stopped || await native(it.t)) continue; if (!shown) { shown = true; say("Ovoz xatosi: " + fe(e), "s"); } }
+    }
+  })();
+  return {
+    run, get stopped() { return stopped; },
+    add(t) { if (stopped) return; const p = bad || !nkey ? Promise.reject(new Error("NeuronAI ovozi yoʻq")) : fetchTTS(t); p.catch(() => {}); q.push({ p, t }); wake && wake(); },
+    end() { done = true; wake && wake(); },
+    stop() { stopped = true; q.length = 0; stopAud(); try { speechSynthesis.cancel(); } catch (e) {} wake && wake(); }
+  };
+}
+const stopSpeak = () => { SP && SP.stop(); };
+async function speak(t) {
+  if (!ready()) return;
+  const sp = SP = newSpeaker(); sp.add(t); sp.end(); await sp.run;
+  if (!sp.stopped) setS("idle");
+}
+
+async function turn(q, voice = true) {
+  Q.length = 0; say(q, "u"); $("cq").textContent = q; $("ca").textContent = ""; setS("think");
+  const d = msg("j", ""); d.innerHTML = '<span class="dt"><i></i><i></i><i></i></span>';
+  const sp = SP = newSpeaker(); ac = new AbortController(); let buf = "", full = "", first = true;
+  const feed = fin => { if (!voice) return; const [ss, rest] = takeSentences(buf, fin, first ? 12 : 24); buf = rest; if (ss.length) first = false; ss.forEach(s => sp.add(s.replace(/[*_#`]/g, ""))); };
+  try {
+    await answer(q, t => { full += t; buf += t; d.textContent = full; $("ca").textContent = full.slice(-220); $("log").scrollTop = 1e9; feed(false); });
+    if (!full.trim()) d.textContent = "(javob kelmadi)";
+    feed(true);
+  } catch (e) { if (!full) d.parentElement.remove(); if (!ac.signal.aborted) say("Xato: " + fe(e), "s"); }
+  if (full.trim()) { chat.push({ r: "j", t: full, ts: Date.now() }); saveChat(); }
+  sp.end(); await sp.run;
+  if (sp.stopped) { Q.length = 0; return; }
+  setS("idle");
+  if (Q.length) { flushQ(); return; }
+  if (voice && $("auto").checked) relisten(); else if (!voice) stat("");
+}
+
+class NativeSR {
+  constructor() { this.lang = "uz-UZ"; }
+  start() { window.__sr = this; NJ.listen(this.lang); }
+  stop() { NJ.stopListen(); }
+  abort() { NJ.cancelListen(); }
+}
+window.__srEv = (k, v) => {
+  const r = window.__sr; if (!r) return;
+  if (k === "start") r.onstart && r.onstart();
+  else if (k === "res") r.onresult && r.onresult({ results: [[{ transcript: v }]] });
+  else if (k === "err") r.onerror && r.onerror({ error: v });
+  else if (k === "end") r.onend && r.onend();
+  else if (k === "rms") micLvl = Math.max(micLvl, Math.min(1, (+v + 2) / 12));
+};
+const SR = NJ ? NativeSR : (window.SpeechRecognition || window.webkitSpeechRecognition);
+function listen() {
+  if (!SR) { stat("Bu brauzer nutq tanishni qoʻllamaydi. Chrome ishlating."); return; }
+  if (!ready()) return;
+  rec = new SR(); rec.lang = "uz-UZ"; rec.interimResults = true; rec.continuous = false;
+  let fin = "", err = "";
+  rec.onstart = () => { setS("listen"); stat("Tinglayapman…"); $("cq").textContent = ""; $("ca").textContent = ""; };
+  rec.onresult = e => { let t = ""; for (const r of e.results) t += r[0].transcript; fin = t; $("cq").textContent = t; };
+  rec.onerror = e => { err = (e.error === "no-speech" || e.error === "aborted") ? "" : e.error; if (err) stat(SE[err] || "Nutq xatosi: " + err); };
+  rec.onend = () => {
+    if (err) { setS("idle"); return; }
+    const q = fin.trim();
+    if (!q) { setS("idle"); if ($("auto").checked) relisten(); else stat("Hech narsa eshitilmadi."); return; }
+    turn(q);
+  };
+  rec.start();
+}
+
+$("orb").onclick = () => {
+  unlock();
+  if (S === "think") { ac && ac.abort(); stopSpeak(); setS("idle"); stat("Bekor qilindi."); return; }
+  keepOn();
+  if (S === "listen") rec.stop();
+  else if (S === "speak") { stopSpeak(); setS("idle"); }
+  else listen();
+};
+$("tf").onsubmit = e => {
+  e.preventDefault(); unlock();
+  const q = $("ti").value.trim(), v = $("rd").checked;
+  if (!q || S === "think" || !ready(v)) return;
+  $("ti").value = ""; stopSpeak(); turn(q, v);
+};
+$("sg").onclick = e => { const b = e.target.closest("button"); if (b) { $("ti").value = b.textContent; $("tf").requestSubmit(); } };
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => {
+  document.body.dataset.v = b.dataset.v;
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.toggle("on", x === b));
+  if (b.dataset.v === "cv") $("log").scrollTop = 1e9;
+});
+$("cc").onclick = () => { if (confirm("Suhbat tozalansinmi?")) { chat = []; hist = []; saveChat(); $("log").innerHTML = ""; $("sg").style.display = ""; } };
+$("gear").onclick = () => $("wrap").classList.add("open");
+$("bd").onclick = $("cl").onclick = () => $("wrap").classList.remove("open");
+$("save").onclick = () => { key = $("key").value.trim(); sv("k", key); loadModels(); };
+$("model").onchange = () => { model = $("model").value; sv("m", model); };
+$("nk").oninput = () => { nkey = $("nk").value.trim(); sv("nk", nkey); };
+$("nk").onchange = loadVoices;
+$("vs").onchange = () => { nvoice = $("vs").value; sv("nv", nvoice); };
+$("lv").onclick = loadVoices;
+$("vt").onclick = () => { unlock(); $("wrap").classList.remove("open"); if (ready()) speak("Salom, boss. Ovoz ishlayapti."); };
+
+$("mm").onclick = () => { if (confirm("Xotira tozalansinmi?")) { mem = []; sv("mem", "[]"); upd(); } };
+let dp = null;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); dp = e; $("inst").style.display = ""; });
+$("inst").onclick = async () => { if (dp) { dp.prompt(); await dp.userChoice; dp = null; $("inst").style.display = "none"; } };
+if ("serviceWorker" in navigator && !NJ) navigator.serviceWorker.register("sw.js").catch(() => {});
+upd();
+
+/* ---- Doimiy suhbat, taymer ---- */
+const relisten = () => setTimeout(() => { if (S === "idle" && $("auto").checked && !document.hidden) listen(); }, 450);
+let wl = null;
+async function keepOn() { try { if (navigator.wakeLock && $("auto").checked && !document.hidden && !wl) { wl = await navigator.wakeLock.request("screen"); wl.onrelease = () => { wl = null; }; } } catch (e) {} }
+$("auto").checked = g("auto", "") === "1";
+if (NJ) { try { NJ.keepAwake($("auto").checked); } catch (e) {} }
+$("auto").onchange = () => { sv("auto", $("auto").checked ? "1" : "0"); if ($("auto").checked) { unlock(); keepOn(); } else if (wl) wl.release(); if (NJ) { try { NJ.keepAwake($("auto").checked); } catch (e) {} } };
+document.addEventListener("visibilitychange", () => { if (!document.hidden) keepOn(); });
+try { speechSynthesis.getVoices(); } catch (e) {}
+const tmGet = () => { try { return JSON.parse(g("tm", "[]")); } catch (e) { return []; } };
+function beep() {
+  try {
+    unlock(); if (!AC) return;
+    const o = AC.createOscillator(), v = AC.createGain(), t = AC.currentTime;
+    o.frequency.value = 880; o.connect(v); v.connect(AC.destination); v.gain.setValueAtTime(0, t);
+    for (let i = 0; i < 3; i++) { v.gain.linearRampToValueAtTime(.35, t + i * .5 + .03); v.gain.linearRampToValueAtTime(0, t + i * .5 + .3); }
+    o.start(t); o.stop(t + 1.6);
+  } catch (e) {}
+}
+function arm() { tick(); }
+function tick() {
+  const now = Date.now(), all = tmGet(), due = all.filter(x => x.at <= now);
+  if (due.length) { sv("tm", JSON.stringify(all.filter(x => x.at > now))); due.forEach(x => { if (!x.n) alarm(x.l); }); }
+  const nx = tmGet().sort((p, q) => p.at - q.at)[0], tp = $("tp");
+  if (nx) {
+    const s = Math.max(0, Math.round((nx.at - now) / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), q = s % 60;
+    $("tpt").textContent = (h ? h + ":" : "") + String(m).padStart(2, "0") + ":" + String(q).padStart(2, "0"); tp.classList.add("on");
+  } else tp.classList.remove("on");
+}
+sv("tm", JSON.stringify(tmGet().filter(x => x.at > Date.now() - 6e5))); tick(); setInterval(tick, 1000); document.addEventListener("visibilitychange", tick);
+
+/* ---- Android ilova (APK): telefonni boshqarish ---- */
+window.__back = () => { const w = $("wrap"); if (w.classList.contains("open")) { w.classList.remove("open"); return true; } return false; };
+if (NJ) {
+  const D = TOOLS[0].functionDeclarations, t0 = FN.set_timer;
+  D.splice(D.findIndex(d => d.name === "set_timer"), 1);
+  D.push(
+    { name: "set_timer", description: "Telefon taymerini qoʻyadi (ilova yopiq boʻlsa ham jiringlaydi)", parameters: { type: "object", properties: { seconds: { type: "integer" }, label: { type: "string" } }, required: ["seconds"] } },
+    { name: "set_alarm", description: "Budilnik qoʻyadi. Vaqt 24 soatlik formatda", parameters: { type: "object", properties: { hour: { type: "integer" }, minute: { type: "integer" }, label: { type: "string" }, daily: { type: "boolean", description: "har kuni takrorlansin" } }, required: ["hour", "minute"] } },
+    { name: "call", description: "Kontaktga (ism boʻyicha) yoki raqamga qoʻngʻiroq qiladi", parameters: { type: "object", properties: { name: { type: "string", description: "kontakt ismi" }, number: { type: "string", description: "telefon raqami (ism boʻlmasa)" } } } },
+    { name: "open_app", description: "Telefondagi ilovani ochadi", parameters: { type: "object", properties: { name: { type: "string", description: "ilova nomi odatdagi koʻrinishda: Telegram, YouTube, Camera, Settings" } }, required: ["name"] } },
+    { name: "open_url", description: "Havolani ochadi: sayt, YouTube qidiruvi, xarita (https://www.google.com/maps/search/?api=1&query=...)", parameters: { type: "object", properties: { url: { type: "string" } }, required: ["url"] } },
+    { name: "set_volume", description: "Media ovoz balandligi: percent (0-100) yoki direction (up yoki down)", parameters: { type: "object", properties: { percent: { type: "integer" }, direction: { type: "string", enum: ["up", "down"] } } } },
+    { name: "flashlight", description: "Fonarni yoqadi yoki oʻchiradi", parameters: { type: "object", properties: { on: { type: "boolean" } }, required: ["on"] } },
+    { name: "media", description: "Musiqa boshqaruvi", parameters: { type: "object", properties: { action: { type: "string", enum: ["play_pause", "next", "previous", "stop"] } }, required: ["action"] } }
+  );
+  FN.set_timer = async ({ seconds, label }) => {
+    const n = Math.max(1, Math.min(+seconds || 0, 86400)), r = nj("timer", { seconds: n, label: label || "" });
+    if (r.error) return t0({ seconds: n, label });
+    sv("tm", JSON.stringify([...tmGet(), { id: Date.now(), at: Date.now() + n * 1000, l: label || "Vaqt tugadi", n: 1 }])); tick();
+    return { ok: true, seconds: n };
+  };
+  FN.set_alarm = async a => nj("alarm", a);
+  FN.set_volume = async a => nj("volume", a);
+  FN.flashlight = async a => nj("torch", a);
+  FN.media = async a => nj("media", a);
+  FN.open_url = async ({ url }) => {
+    if (!/^https?:\/\//i.test(url || "")) return { error: "faqat http yoki https havola" };
+    later(() => nj("url", { url })); return { ok: true, note: "javobdan keyin ochiladi" };
+  };
+  FN.open_app = async ({ name }) => {
+    const r = nj("find_app", { name }); if (r.error) return r;
+    later(() => nj("launch", { pkg: r.pkg })); return { ok: true, app: r.label, note: "javobdan keyin ochiladi" };
+  };
+  FN.call = async ({ name, number }) => {
+    const raw = String(number || "").replace(/[^\d+*#]/g, "");
+    if (raw) { later(() => nj("call", { number: raw, direct: false })); return { ok: true, calling: raw, note: "raqam terish oynasi ochiladi" }; }
+    const r = nj("find_contact", { name: name || "" }); if (r.error) return r;
+    later(() => nj("call", { number: r.number, direct: true })); return { ok: true, calling: r.name, note: "javobdan keyin qoʻngʻiroq boshlanadi" };
+  };
+  const pst = () => {
+    const p = nj("perms"), y = v => v ? "bor" : "yoʻq";
+    $("ph").textContent = "Mikrofon: " + y(p.mic) + " · Kontaktlar: " + y(p.contacts) + " · Qoʻngʻiroq: " + y(p.call);
+  };
+  $("pc").style.display = ""; pst(); window.__perm = pst;
+  $("pa").onclick = () => { nj("ask_perms"); setTimeout(pst, 800); };
+  $("ps").onclick = () => nj("app_settings");
+}
+
+$("rd").checked = g("rd", "") === "1";
+$("rd").onchange = () => { sv("rd", $("rd").checked ? "1" : "0"); stat($("rd").checked ? "Javoblar ovozda aytiladi." : "Javoblar faqat yoziladi."); };
+
+/* ---- HUD ---- */
+const cv = $("hud"), cx = cv.getContext("2d"), RM = matchMedia("(prefers-reduced-motion:reduce)").matches;
+let W = 0, sc = 1;
+function fit() {
+  const s = Math.min(innerWidth * .86, 340, innerHeight * .4), d = Math.min(devicePixelRatio || 1, 2);
+  cv.style.width = cv.style.height = s + "px"; cv.width = cv.height = W = Math.round(s * d); sc = W / 320;
+}
+addEventListener("resize", fit); fit();
+const CL = { idle: [53, 224, 198], listen: [242, 196, 109], think: [167, 139, 250], speak: [53, 224, 198] };
+let col = [53, 224, 198], lvl = 0, bar = new Float32Array(96);
+const T0 = performance.now();
+const PT = Array.from({ length: 44 }, () => ({ a: Math.random() * 6.283, r: .36 + Math.random() * .6, s: (Math.random() - .5) * .35, z: .8 + Math.random() * 1.6, p: Math.random() * 6.283 }));
+function frame(now) {
+  const t = (now - T0) / 1000 * (RM ? .25 : 1), c = W / 2, R = c * .96, kc = CL[S];
+  for (let i = 0; i < 3; i++) col[i] += (kc[i] - col[i]) * .07;
+  const rc = a => `rgba(${col[0] | 0},${col[1] | 0},${col[2] | 0},${a})`;
+  const poly = (n, r, rot, a) => { cx.strokeStyle = rc(a); cx.lineWidth = 1.8 * sc; cx.beginPath(); for (let i = 0; i <= n; i++) { const q = rot + i / n * 6.283; cx[i ? "lineTo" : "moveTo"](Math.cos(q) * r, Math.sin(q) * r); } cx.stroke(); };
+  let tg;
+  if (S === "speak") { if (an) { an.getByteFrequencyData(fd); let s = 0; for (let i = 0; i < 24; i++) s += fd[i + 1]; tg = Math.min(1, s / 24 / 200); } else tg = .35 + .2 * Math.sin(t * 9) * Math.sin(t * 2.7); }
+  else tg = S === "listen" ? .28 + .14 * Math.sin(t * 5) + micLvl * .45 : S === "think" ? .2 : .08 + .04 * Math.sin(t * 1.6);
+  micLvl *= .93; lvl += (tg - lvl) * .18;
+  cx.clearRect(0, 0, W, W); cx.save(); cx.translate(c, c); cx.lineCap = "round";
+  let gr = cx.createRadialGradient(0, 0, 0, 0, 0, R * .62);
+  gr.addColorStop(0, rc(.28 + lvl * .6)); gr.addColorStop(1, rc(0));
+  cx.fillStyle = gr; cx.beginPath(); cx.arc(0, 0, R * .62, 0, 6.283); cx.fill();
+  cx.save(); cx.rotate(t * .1); cx.strokeStyle = rc(.55);
+  for (let i = 0; i < 120; i++) {
+    const a = i / 120 * 6.283, L = i % 10 === 0 ? .075 : i % 5 === 0 ? .05 : .028;
+    cx.lineWidth = (i % 10 === 0 ? 2 : 1) * sc; cx.beginPath();
+    cx.moveTo(Math.cos(a) * R, Math.sin(a) * R); cx.lineTo(Math.cos(a) * R * (1 - L), Math.sin(a) * R * (1 - L)); cx.stroke();
+  }
+  cx.restore();
+  const sp = S === "think" ? 4 : S === "listen" ? 1.6 : 1;
+  for (let k = 0; k < 4; k++) {
+    const r = R * (.86 - k * .065), dir = k % 2 ? -1 : 1;
+    cx.lineWidth = (k === 1 ? 5 : 2.5) * sc; cx.strokeStyle = rc(k === 1 ? .8 : .55);
+    for (let j = 0; j < 3; j++) { const a0 = t * dir * (.35 + k * .22) * sp + j * 2.094 + k; cx.beginPath(); cx.arc(0, 0, r, a0, a0 + 1.25 - k * .2); cx.stroke(); }
+  }
+  if (S === "think") { const a = t * 5; for (let i = 0; i < 26; i++) { cx.strokeStyle = rc(.5 * (1 - i / 26)); cx.lineWidth = 7 * sc; cx.beginPath(); cx.arc(0, 0, R * .74, a - i * .05, a - i * .05 + .06); cx.stroke(); } }
+  const n = 96, r0 = R * .5; cx.lineWidth = 2.6 * sc;
+  for (let i = 0; i < n; i++) {
+    let v;
+    if (S === "speak" && an) v = Math.min(1, fd[((i < 48 ? i : 95 - i) >> 1) + 1] / 200);
+    else v = (.5 + .5 * Math.sin(t * 2.4 + i * .55) * Math.sin(t * 1.1 + i * .17)) * (lvl * 1.6 + .06);
+    bar[i] += (v - bar[i]) * .4;
+    const a = i / n * 6.283 - 1.5708, r1 = r0 + 2 * sc + bar[i] * R * .3;
+    cx.strokeStyle = rc(.35 + bar[i] * .65); cx.beginPath();
+    cx.moveTo(Math.cos(a) * r0, Math.sin(a) * r0); cx.lineTo(Math.cos(a) * r1, Math.sin(a) * r1); cx.stroke();
+  }
+  cx.strokeStyle = rc(.6); cx.lineWidth = 1.5 * sc; cx.beginPath(); cx.arc(0, 0, R * .44, 0, 6.283); cx.stroke();
+  poly(4, R * .36, t * .3, .75); poly(4, R * .36, t * .3 + .7854, .75); poly(4, R * .24, -t * .5, .9); poly(4, R * .24, -t * .5 + .7854, .9);
+  cx.save(); cx.rotate(-t * .06); cx.strokeStyle = rc(.4); cx.lineWidth = 1.2 * sc;
+  for (let i = 0; i < 16; i++) { cx.rotate(6.2832 / 16); cx.beginPath(); cx.moveTo(R * .6, 0); cx.quadraticCurveTo(R * .66, R * .04, R * .73, 0); cx.quadraticCurveTo(R * .66, -R * .04, R * .6, 0); cx.stroke(); }
+  cx.restore();
+  gr = cx.createRadialGradient(0, 0, 0, 0, 0, R * .2 * (1 + lvl * .7));
+  gr.addColorStop(0, "#fff"); gr.addColorStop(.35, rc(.95)); gr.addColorStop(1, rc(0));
+  cx.fillStyle = gr; cx.beginPath(); cx.arc(0, 0, R * .3, 0, 6.283); cx.fill();
+  for (const p of PT) { const a = p.a + t * p.s, r = p.r * R; cx.fillStyle = rc(.25 + .35 * Math.sin(t * 2 + p.p)); cx.beginPath(); cx.arc(Math.cos(a) * r, Math.sin(a) * r, p.z * sc, 0, 6.283); cx.fill(); }
+  cx.restore();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+$("key").value = key; $("nk").value = nkey;
+$("vs").innerHTML = '<option value="' + nvoice + '">' + nvoice + '</option>';
+document.querySelectorAll(".eye").forEach(b => b.onclick = () => {
+  const i = b.parentElement.querySelector("input"); i.type = i.type === "password" ? "text" : "password";
+  b.setAttribute("aria-label", i.type === "password" ? "Kalitni koʻrsatish" : "Kalitni yashirish");
+});
+if (nkey) loadVoices(); else hint("vh", "Ovozlarni yuklash uchun NeuronAI kalitini kiriting.");
+if (key) loadModels(); else hint("kh", "Gemini kalitini kiriting.");
+if (!key) $("wrap").classList.add("open");
+chat.forEach(m => msg(m.r, m.t, m.ts));
+hist = chat.slice(-10).map(m => ({ role: m.r === "u" ? "user" : "model", parts: [{ text: m.t }] }));
+while (hist.length && hist[0].role !== "user") hist.shift();
+if (chat.length) $("sg").style.display = "none";
+$("ca").textContent = "Salom, boss. Aylanani bosing va gapiring.";
+</script>
+</body>
+</html>
